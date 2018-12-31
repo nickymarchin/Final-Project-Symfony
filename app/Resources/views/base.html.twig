@@ -3,11 +3,155 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+
+        {% block stylesheets %}
+            {#<link rel="stylesheet" href="{{ asset('css/style.css') }}">#}
+            {#<link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker.min.css') }}">#}
+            {#<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"#}
+                  {#integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"#}
+                  {#crossorigin="anonymous">#}
+            {#<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"#}
+                    {#integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"#}
+                    {#crossorigin="anonymous"></script>#}
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+                  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            <link rel="stylesheet" href="{{ asset('font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+
+        {% endblock %}
+
+        {% block javascripts %}
+
+        {% endblock %}
+
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        {% block header %}
+
+            <header>
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+                    <div class="container">
+                        <a class="navbar-brand" href="{{ path('homepage') }}">ИВ Такси</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarResponsive">
+                            <ul class="navbar-nav ml-auto">
+
+                                {% if app.user %}
+                                    {% if app.getUser().isAdmin() %}
+                                        <li class="nav-item">
+                                            <a class="btn btn-success btn-sm" href="#">
+                                                Админ Панел
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="#">
+                                            За нас
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">
+                                            Шофьори
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">
+                                            Коли
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">
+                                            Клиентски блог
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">
+                                            Загубени вещи
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">
+                                            Контакти
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="btn btn-primary" href="{{ path('security_logout') }}">
+                                            <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+
+                                {% else %}
+
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="#">
+                                            За нас
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">
+                                            Шофьори
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">
+                                            Коли
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">
+                                            Контакти
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                    <a class="btn btn-primary" href="{{ path('security_login') }}">
+                                        Влез в своя профил <i class="fa fa-sign-in" aria-hidden="true"></i>
+                                    </a>
+                                    </li>
+
+                                {% endif %}
+
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+        {% endblock %}
+
+        {% block style %}{% endblock %}
+
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block body %}
+             {#<div class="container body-content">#}
+                <div class="row">
+                    <div id="main" class="col-sm-12">
+                        {% block main %}
+
+
+                        {% endblock %}
+                    </div>
+                </div>
+             {#</div>#}
+        {% endblock %}
+
+        {% block footer %}
+
+            {#<br/>#}
+            {#<footer>#}
+                {#<div class="container modal-footer">#}
+                    {#<p>&copy; 2018 - Blog Project</p>#}
+                {#</div>#}
+            {#</footer>#}
+            <footer class="py-5 bg-dark">
+                <div class="container">
+                    <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+                </div>
+                <!-- /.container -->
+            </footer>
+
+        {% endblock %}
+
     </body>
 </html>
