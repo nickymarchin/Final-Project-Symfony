@@ -16,24 +16,24 @@
         <div class="well">
             <form name="authenticate" class="form-horizontal" action="{{ path('security_login') }}" method="post">
                 <fieldset>
-                    <legend>Login</legend>
+                    <legend>Влез или <a href="{{ path('user_register') }}">се регистрирай</a></legend>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="user_email">Email</label>
+                        <label class="col-sm-4 control-label" for="user_email">Имейл</label>
                         <div class="col-sm-4 ">
-                            <input type="email" class="form-control" id="user_email" placeholder="Email" name="_username">
+                            <input type="email" class="form-control" id="user_email" placeholder="Имейл" name="_username">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="password">Password</label>
+                        <label class="col-sm-4 control-label" for="password">Парола</label>
                         <div class="col-sm-4">
-                            <input type="password" class="form-control" id="password" placeholder="Password" name="_password">
+                            <input type="password" class="form-control" id="password" placeholder="Парола" name="_password">
                         </div>
                     </div>
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-offset-4">
-                            <a class="btn btn-default" href="{{ path('homepage') }}">Cancel</a>
-                            <button type="submit" class="btn btn-primary">Login</button>
+                            <a class="btn btn-default" href="{{ path('homepage') }}">Обратно</a>
+                            <button type="submit" class="btn btn-primary">Влез</button>
                         </div>
                     </div>
 

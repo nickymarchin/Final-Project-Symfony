@@ -4,7 +4,6 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use AppBundle\Entity\Role;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -48,6 +47,13 @@ class User implements UserInterface
     /**
      * @var ArrayCollection
      *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Article", mappedBy="author")
+     */
+    private $articles;
+
+    /**
+     * @var ArrayCollection
+     *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Role")
      * @ORM\JoinTable(name="users_roles",
      *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
@@ -57,8 +63,20 @@ class User implements UserInterface
      */
     private $roles;
 
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Article")
+     * @ORM\JoinTable(name="users_likes",
+     *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="article_id", referencedColumnName="id")}
+     *     )
+     */
+    private $likedArticles;
+
     public function __construct()
     {
+        $this->articles = new ArrayCollection();
         $this->roles = new ArrayCollection();
     }
 
@@ -205,11 +223,67 @@ class User implements UserInterface
     }
 
     /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArticles()
+    {
+        return $this->articles;
+    }
+
+    /**
+     * @param \AppBundle\Entity\Article $article
+     *
+     * @return User
+     */
+    public function addPost(Article $article)
+    {
+        $this->articles[] = $article;
+
+        return $this;
+    }
+
+    /**
      * @return bool
      */
     public function isAdmin()
     {
         return in_array("ROLE_ADMIN", $this->getRoles());
+    }
+
+    /**
+     * @param Article $article
+     *
+     * @return bool
+     *
+     */
+    public function isAuthor(Article $article)
+    {
+        return $article->getAuthorId() == $this->getId();
+    }
+
+    public function getLikedArticles()
+    {
+        $liked = [];
+        foreach ($this->likedArticles as $article) {
+
+            /** @var Article $article */
+            $liked[] = $article->getId();
+
+        }
+
+        return $liked;
+    }
+
+    /**
+     * @param Article $article
+     *
+     * @return User
+     */
+    public function addLike(Article $article)
+    {
+        $this->likedArticles[] = $article;
+
+        return $this;
     }
 
     function __toString()

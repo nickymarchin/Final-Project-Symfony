@@ -3,23 +3,23 @@
 {% block style %}
     <style type="text/css">
 
-        .jumbotron{
+        .jumbotron {
             margin-top: 2em;
-            background: url("https://images.unsplash.com/photo-1468689210283-44a1b8ba20ce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80") top center fixed;
+            background: url("https://stmed.net/sites/default/files/taxi-wallpapers-32597-570240.jpg") top center fixed;
             background-size: cover;
             color: white;
             padding-top: 10em;
             padding-bottom: 10em;
         }
 
-        .jumbotron p{
+        .jumbotron p {
             font-size: 2em;
             color: white;
             /*text-align: justify;*/
             font-family: 'Bahnschrift', serif;
         }
 
-        .jumbotron h1{
+        .jumbotron h1 {
             font-size: 5em;
             color: white;
             text-align: center;
@@ -37,8 +37,8 @@
                 <div class="col-md-12">
                     <div class="text-center">
                         <h1>"ИВ Такси" - Достъпни цени и комфорт</h1>
-                        <br />
-                        <br />
+                        <br/>
+                        <br/>
                         <p class="text-center">Поръчай такси в Дупница и района!</p>
                         <p class="text-center"><a class="btn btn-primary btn-lg" href="#" role="button">Поръчай!</a></p>
                     </div>
@@ -47,26 +47,68 @@
         </div>
     </div>
 
-    <div class="container">
-        <div class="row">
-
-            <div class="col-lg-8">
-
+    <section class="bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="text-center">НОВО! Почасово наемане на такси</h2>
+                    <br/>
+                    <p class="lead">ИВ Такси предлага нова услуга на своите клиенти – почасово наемане на таксиметрови автомобили. Услугата е подходяща за гости на града,
+                        които желаят да разгледат избрани обекти и забележителности.
+                        Повече <a href="#">информация и цени</a> за почасово наемане на такси</p>
+                </div>
             </div>
-
-            <div class="col-md-4">
+        </div>
+    </section>
+    <br />
+    <section class="bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="text-center">Стани част от нашата общност!</h2>
+                    <br/>
+                    <p class="lead">В клиентския ни блог можеш да намериш информация относно трафика и пътната обстановка
+                        или просто да прочетеш интерени новини и обяви от района</p>
+                    {% if app.user %}
+                        <a href="{{ path('blog') }}" class="btn btn-primary text-center">Клиентски блог</a>
+                    {% else %}
+                        <a href="{{ path('user_register') }}" class="btn btn-primary text-center">Регистрирай се!</a>
+                    {% endif %}
+                    <br />
+                    <br />
+                </div>
+            </div>
+        </div>
+    </section>
+    <br />
+    <section class="testimonials text-center bg-light">
+        <div class="container">
+            <h2 class="mb-5">Какво казват хората за нас...</h2>
+            <div class="row">
                 <div class="col-lg-4">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Стани част от нашата общност</h5>
-                            <p class="card-text">Quick sample text to create the card title and make up the body of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Регистрирай се!</a>
-                        </div>
+                    <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                        <img class="img-fluid rounded-circle mb-3" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvb6rtpSdFO8LIMZk60upPaUdQzTMiYBb60Gtv3Bbs1j0xkcdZLA" alt="">
+                        <h5>Person 1</h5>
+                        <p class="font-weight-light mb-0">"Уникална услуга. Най-добрите!"</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                        <img class="img-fluid rounded-circle mb-3" src="https://media.licdn.com/dms/image/C4E03AQGf9zkHG4NFkQ/profile-displayphoto-shrink_100_100/0?e=2159024400&v=beta&t=A7uk81ePTeSpxNwbhKu1uSJDgm1dd8vh-Jq2VOHTlzQ" alt="">
+                        <h5>Person 2</h5>
+                        <p class="font-weight-light mb-0">"Няма по-добри в района!"</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                        <img class="img-fluid rounded-circle mb-3" src="https://d2r1vs3d9006ap.cloudfront.net/public/uploaded_images/11356001//platform/profilepic/_large." alt="">
+                        <h5>Person 3</h5>
+                        <p class="font-weight-light mb-0">"Цените са голямото предимство."</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
 {% endblock %}
 

@@ -16,13 +16,14 @@ class UserController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function registerAction(Request $request){
+    public function registerAction(Request $request)
+    {
 
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
 
             $emailForm = $form->getData()->getEmail();
 
@@ -31,12 +32,12 @@ class UserController extends Controller
                 ->getRepository(User::class)
                 ->findOneBy(['email' => $emailForm]);
 
-            if (null !== $userCheck){
+            if (null !== $userCheck) {
 
                 $this->addFlash('info', "Username with email : $emailForm  already exists!");
 
                 return $this->render("user/register.html.twig",
-                    array('form'=>$form->createView())
+                    array('form' => $form->createView())
                 );
 
             }
@@ -59,7 +60,7 @@ class UserController extends Controller
 
         }
         return $this->render("user/register.html.twig",
-            array('form'=>$form->createView())
+            array('form' => $form->createView())
         );
 
     }
