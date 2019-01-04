@@ -18,7 +18,7 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
     public function findByCategory($id)
     {
         return $this->createQueryBuilder("articles")
-            ->where("articles.categoryId = :category_id")
+            ->where("articles.category_id = :category_id")
             ->setParameter('category_id', $id)
             ->orderBy('articles.dateAdded', 'desc')
             ->getQuery()

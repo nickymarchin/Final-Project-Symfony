@@ -71,10 +71,10 @@
                     </a>
                     <span style="font-size: x-large">{{ article.likesCount }}</span>
 
-                    <a href="https://www.facebook.com/nikolay.marchin">
+                    <a href="{{ path('article_dislike', {'id': article.id}) }}">
                         <i class="fa fa-2x fa-thumbs-o-down" aria-hidden="true"></i>
                     </a>
-                    <span style="font-size: x-large">0</span>
+                    <span style="font-size: x-large">{{ article.dislikesCount }}</span>
                 </div>
 
                 <hr>

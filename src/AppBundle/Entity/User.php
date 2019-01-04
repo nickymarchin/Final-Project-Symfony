@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -64,15 +65,26 @@ class User implements UserInterface
     private $roles;
 
     /**
-     * @var ArrayCollection
+     * @var Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Article")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Article", )
      * @ORM\JoinTable(name="users_likes",
      *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
      *     inverseJoinColumns={@ORM\JoinColumn(name="article_id", referencedColumnName="id")}
      *     )
      */
     private $likedArticles;
+
+    /**
+     * @var Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Article", cascade={"persist","remove"})
+     * @ORM\JoinTable(name="users_dislikes",
+     *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="article_id", referencedColumnName="id")}
+     *     )
+     */
+    private $dislikedArticles;
 
     /**
      * @var ArrayCollection|Comment[]
@@ -86,6 +98,7 @@ class User implements UserInterface
         $this->articles = new ArrayCollection();
         $this->roles = new ArrayCollection();
         $this->likedArticles = new ArrayCollection();
+        $this->dislikedArticles = new ArrayCollection();
         $this->comments = new ArrayCollection();
     }
 
@@ -291,6 +304,57 @@ class User implements UserInterface
     public function addLike(Article $article)
     {
         $this->likedArticles[] = $article;
+
+        return $this;
+    }
+
+    /**
+     * @param Article $article
+     *
+     * @return User
+     */
+    public function removeLike(Article $article)
+    {
+        $array = $this->getLikedArticles();
+        unset($article,$array);
+
+        return $this;
+    }
+
+    public function getDislikedArticles()
+    {
+        $disliked = [];
+        foreach ($this->dislikedArticles as $article) {
+
+            /** @var Article $article */
+            $disliked[] = $article->getId();
+
+        }
+
+        return $disliked;
+    }
+
+    /**
+     * @param Article $article
+     *
+     * @return User
+     */
+    public function addDislike(Article $article)
+    {
+        $this->dislikedArticles[] = $article;
+
+        return $this;
+    }
+
+    /**
+     * @param Article $article
+     *
+     * @return User
+     */
+    public function removeDislike(Article $article)
+    {
+        $array = $this->getDislikedArticles();
+        unset($article, $array);
 
         return $this;
     }

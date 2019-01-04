@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -98,13 +99,29 @@ class Article
      */
     private $likesCount;
 
+
     /**
-     * @var ArrayCollection
+     * @var int
+     *
+     * @ORM\Column(name="dislikesCount", type="integer")
+     */
+    private $dislikesCount;
+
+    /**
+     * @var Collection
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User", mappedBy="likedArticles")
      *
      */
     private $usersLiked;
+
+    /**
+     * @var Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User", mappedBy="dislikedArticles")
+     *
+     */
+    private $usersDisliked;
 
     /**
      * @var ArrayCollection|Comment[]
@@ -114,17 +131,17 @@ class Article
     private $comments;
 
     /**
-     * @var int
-     *
-     *@ORM\Column(name="category_id", type="integer")
-     */
-    private $categoryId;
-
-    /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Category", inversedBy="articles")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
-    private $category;
+    private $category_id;
+
+//    /**
+//     * @var int
+//     *
+//     *@ORM\Column(name="categoryId", type="integer")
+//     */
+//    private $categoryId;
 
     /**
      * @return integer
@@ -146,6 +163,7 @@ class Article
     {
         $this->dateAdded = new \DateTime('now');
         $this->usersLiked = new ArrayCollection();
+        $this->usersDisliked = new ArrayCollection();
         $this->comments = new ArrayCollection();
     }
 
@@ -326,6 +344,44 @@ class Article
     }
 
     /**
+     * @param User $user
+     *
+     * @return Article
+     */
+    public function removeUserLiked(User $user)
+    {
+        $array = $this->getUsersLiked();
+        unset($user, $array);
+
+        return $this;
+    }
+
+    /**
+     * @param User $user
+     *
+     * @return Article
+     */
+    public function addUserDisliked(User $user)
+    {
+        $this->usersDisliked[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * @param User $user
+     *
+     * @return Article
+     */
+    public function removeUserDisliked(User $user)
+    {
+        $array = $this->getUsersDisliked();
+        unset($user, $array);
+
+        return $this;
+    }
+
+    /**
      * @return ArrayCollection|Comment[]
      */
     public function getComments()
@@ -346,7 +402,7 @@ class Article
 
     public function getCategory()
     {
-        return $this->category;
+        return $this->category_id;
     }
 
     /**
@@ -356,26 +412,50 @@ class Article
      */
     public function setCategory(Category $category = null)
     {
-        $this->category = $category;
+        $this->category_id = $category;
         return $this;
     }
 
     /**
      * @return int
      */
-    public function getCategoryId(): int
+    public function getDislikesCount(): int
     {
-        return $this->categoryId;
+        return $this->dislikesCount;
     }
+
     /**
-     * @param int $categoryId
-     *
-     * @return Article
+     * @param int $dislikesCount
      */
-    public function setCategoryId(int $categoryId):Article
+    public function setDislikesCount(int $dislikesCount): void
     {
-        $this->categoryId = $categoryId;
-        return $this;
+        $this->dislikesCount = $dislikesCount;
+    }
+
+    public function getUsersLiked()
+    {
+        $liked = [];
+        foreach ($this->usersLiked as $like) {
+
+            /** @var Article $article */
+            $liked[] = $like->getId();
+
+        }
+
+        return $liked;
+    }
+
+    public function getUsersDisliked()
+    {
+        $disliked = [];
+        foreach ($this->usersLiked as $dislike) {
+
+            /** @var Article $article */
+            $disliked[] = $dislike->getId();
+
+        }
+
+        return $disliked;
     }
 }
 

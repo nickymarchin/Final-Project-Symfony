@@ -55,6 +55,7 @@ class ArticleController extends Controller
             $article->setAuthor($currentUser);
             $article->setViewCount(0);
             $article->setLikesCount(0);
+            $article->setDislikesCount(0);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($article);
@@ -221,8 +222,21 @@ class ArticleController extends Controller
         /** @var User $currentUser */
         $currentUser = $this->getUser();
 
-        $article->addUserLiked($currentUser);
+//        if (in_array($article->getId(), $currentUser->getDislikedArticles()))
+//        {
+//            $key_user = array_search($article->getId(), $currentUser->getDislikedArticles());
+//            unset($currentUser->getDislikedArticles()[$key_user]);
+//            $currentUser->getDislikedArticles()[$key_user] = 0;
+//            $key_article = array_search($currentUser->getId(), $article->getUsersDisliked());
+//            unset($article->getUsersDisliked()[$key_article]);
+//            $article->getUsersDisliked()[$key_article] = 0;
+//
+//            $article->setDislikesCount($article->getDislikesCount() - 1);
+////            $currentUser->removeDislike($article);
+////            $article->removeUserDisliked($currentUser);
+//        }
 
+        $article->addUserLiked($currentUser);
 
         $em = $this->getDoctrine()->getManager();
         $em->merge($article);
@@ -248,4 +262,71 @@ class ArticleController extends Controller
                 'article' => $article,
             ]);
     }
+
+    /**
+     * @Route("/blog/article/dislike/{id}", name="article_dislike")
+     *
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     *
+     * @param $id
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function dislikes($id)
+    {
+        $repository = $this->getDoctrine()->getRepository(Article::class);
+
+        $article = $repository->find($id);
+
+        if ($article === null) {
+            return $this->redirectToRoute("blog");
+        }
+
+        /** @var User $currentUser */
+        $currentUser = $this->getUser();
+
+//        if (in_array($article->getId(), $currentUser->getLikedArticles()))
+//        {
+//            $key_user = array_search($article->getId(), $currentUser->getLikedArticles());
+//            unset($currentUser->getLikedArticles()[$key_user]);
+//            $currentUser->getLikedArticles()[$key_user] = 0;
+//
+//            $key_article = array_search($currentUser->getId(), $article->getUsersLiked());
+//            unset($article->getUsersLiked()[$key_article]);
+//            $article->getUsersLiked()[$key_article] = 0;
+//
+//            $article->setLikesCount($article->getLikesCount() - 1);
+//
+////            $currentUser->removeLike($article);
+////            $article->removeUserLiked($currentUser);
+//        }
+
+        $article->addUserDisliked($currentUser);
+
+
+        $em = $this->getDoctrine()->getManager();
+        $em->merge($article);
+
+        if (in_array($article->getId(), $currentUser->getDislikedArticles())) {
+            $this->addFlash('error', "You already disliked this article!");
+
+            return $this->render('article/article.html.twig',
+                [
+                    'article' => $article,
+                ]);
+        }
+
+        $article->setDislikesCount($article->getDislikesCount() + 1);
+        $currentUser->addDislike($article);
+
+        $em->flush();
+
+        $this->addFlash('success', "Disliked :|");
+
+        return $this->render('article/article.html.twig',
+            [
+                'article' => $article,
+            ]);
+    }
+
 }
