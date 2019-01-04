@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Repository;
+use AppBundle\Entity\Article;
 
 /**
  * ArticleRepository
@@ -10,7 +11,19 @@ namespace AppBundle\Repository;
  */
 class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
-
+    /**
+     * @param $id
+     * @return array
+     */
+    public function findByCategory($id)
+    {
+        return $this->createQueryBuilder("articles")
+            ->where("articles.categoryId = :category_id")
+            ->setParameter('category_id', $id)
+            ->orderBy('articles.dateAdded', 'desc')
+            ->getQuery()
+            ->getResult();
+    }
 }
 
 

@@ -106,12 +106,25 @@ class Article
      */
     private $usersLiked;
 
-//    /**
-//     * @var ArrayCollection|Comment[]
-//     *
-//     * @ORM\OneToMany(targetEntity="SoftUniBlogBundle\Entity\Comment", mappedBy="article")
-//     */
-//    private $comments;
+    /**
+     * @var ArrayCollection|Comment[]
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Comment", mappedBy="article")
+     */
+    private $comments;
+
+    /**
+     * @var int
+     *
+     *@ORM\Column(name="category_id", type="integer")
+     */
+    private $categoryId;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Category", inversedBy="articles")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    private $category;
 
     /**
      * @return integer
@@ -133,7 +146,7 @@ class Article
     {
         $this->dateAdded = new \DateTime('now');
         $this->usersLiked = new ArrayCollection();
-        //$this->comments = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     /**
@@ -312,23 +325,57 @@ class Article
         return $this;
     }
 
-//    /**
-//     * @return ArrayCollection|Comment[]
-//     */
-//    public function getComments()
-//    {
-//        return $this->comments;
-//    }
-//
-//    /**
-//     * @param Comment $comment
-//     *
-//     * @return Article
-//     */
-//    public function addComment(Comment $comment = null)
-//    {
-//        $this->comments[] = $comment;
-//        return $this;
-//    }
+    /**
+     * @return ArrayCollection|Comment[]
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @param Comment $comment
+     *
+     * @return Article
+     */
+    public function addComment(Comment $comment = null)
+    {
+        $this->comments[] = $comment;
+        return $this;
+    }
+
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param Category $category
+     *
+     * @return Article
+     */
+    public function setCategory(Category $category = null)
+    {
+        $this->category = $category;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCategoryId(): int
+    {
+        return $this->categoryId;
+    }
+    /**
+     * @param int $categoryId
+     *
+     * @return Article
+     */
+    public function setCategoryId(int $categoryId):Article
+    {
+        $this->categoryId = $categoryId;
+        return $this;
+    }
 }
 

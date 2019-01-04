@@ -74,10 +74,19 @@ class User implements UserInterface
      */
     private $likedArticles;
 
+    /**
+     * @var ArrayCollection|Comment[]
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Comment", mappedBy="author")
+     */
+    private $comments;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
         $this->roles = new ArrayCollection();
+        $this->likedArticles = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     /**
@@ -283,6 +292,25 @@ class User implements UserInterface
     {
         $this->likedArticles[] = $article;
 
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection|Comment[]
+     */
+    public function getComments(): ArrayCollection
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @param Comment $comment
+     *
+     * @return User
+     */
+    public function addComment(Comment $comment = null)
+    {
+        $this->comments[] = $comment;
         return $this;
     }
 

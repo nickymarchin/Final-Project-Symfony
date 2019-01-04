@@ -120,11 +120,16 @@ class ArticleController extends Controller
 
             /** @var UploadedFile $file */
             $file = $form->get('image')->getData();
-            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+            $fileName = null;
+            if ($file) {
+                $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+            }
 
             try {
 
-                $file->move($this->getParameter('article_directory'), $fileName);
+                if ($file) {
+                    $file->move($this->getParameter('article_directory'), $fileName);
+                }
 
             } catch (FileException $ex) {
 

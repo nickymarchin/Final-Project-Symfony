@@ -22,16 +22,49 @@ class DefaultController extends Controller
 
     /**
      * @Route("/blog", name="blog")
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function blog()
+    public function blog(Request $request)
     {
         $articles = $this
             ->getDoctrine()
             ->getRepository(Article::class)
             ->findBy([], ['dateAdded' => 'desc', 'viewCount' => 'desc']);
 
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
 
-        return $this->render('article/blog.html.twig', ['articles' => $articles]);
+            $articles, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            5/*limit per page*/
+        );
+
+        return $this->render('article/blog.html.twig', ['pagination' => $pagination]);
     }
+
+    /**
+     * @Route("/blog/{id}", name="blog_category")
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function blogCategory(Request $request, $id)
+    {
+        $articles = $this
+            ->getDoctrine()
+            ->getRepository(Article::class)
+            ->findByCategory($id);
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+
+            $articles, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            5/*limit per page*/
+        );
+
+        return $this->render('article/blog.html.twig', ['pagination' => $pagination]);
+    }
+
 }
