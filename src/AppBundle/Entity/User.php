@@ -67,10 +67,10 @@ class User implements UserInterface
     /**
      * @var Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Article", )
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Article", cascade={"persist","remove"})
      * @ORM\JoinTable(name="users_likes",
-     *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *     inverseJoinColumns={@ORM\JoinColumn(name="article_id", referencedColumnName="id")}
+     *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="CASCADE")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="article_id", referencedColumnName="id", onDelete="CASCADE")}
      *     )
      */
     private $likedArticles;
@@ -80,8 +80,8 @@ class User implements UserInterface
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Article", cascade={"persist","remove"})
      * @ORM\JoinTable(name="users_dislikes",
-     *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *     inverseJoinColumns={@ORM\JoinColumn(name="article_id", referencedColumnName="id")}
+     *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="CASCADE")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="article_id", referencedColumnName="id", onDelete="CASCADE")}
      *     )
      */
     private $dislikedArticles;
@@ -308,19 +308,6 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @param Article $article
-     *
-     * @return User
-     */
-    public function removeLike(Article $article)
-    {
-        $array = $this->getLikedArticles();
-        unset($article,$array);
-
-        return $this;
-    }
-
     public function getDislikedArticles()
     {
         $disliked = [];
@@ -347,19 +334,6 @@ class User implements UserInterface
     }
 
     /**
-     * @param Article $article
-     *
-     * @return User
-     */
-    public function removeDislike(Article $article)
-    {
-        $array = $this->getDislikedArticles();
-        unset($article, $array);
-
-        return $this;
-    }
-
-    /**
      * @return ArrayCollection|Comment[]
      */
     public function getComments(): ArrayCollection
@@ -376,6 +350,14 @@ class User implements UserInterface
     {
         $this->comments[] = $comment;
         return $this;
+    }
+
+    public function removeLikedArticle(Article $article){
+        $this->likedArticles->removeElement($article);
+    }
+
+    public function removeDislikedArticle(Article $article){
+        $this->dislikedArticles->removeElement($article);
     }
 
     function __toString()

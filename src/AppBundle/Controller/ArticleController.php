@@ -222,24 +222,19 @@ class ArticleController extends Controller
         /** @var User $currentUser */
         $currentUser = $this->getUser();
 
-//        if (in_array($article->getId(), $currentUser->getDislikedArticles()))
-//        {
-//            $key_user = array_search($article->getId(), $currentUser->getDislikedArticles());
-//            unset($currentUser->getDislikedArticles()[$key_user]);
-//            $currentUser->getDislikedArticles()[$key_user] = 0;
-//            $key_article = array_search($currentUser->getId(), $article->getUsersDisliked());
-//            unset($article->getUsersDisliked()[$key_article]);
-//            $article->getUsersDisliked()[$key_article] = 0;
-//
-//            $article->setDislikesCount($article->getDislikesCount() - 1);
-////            $currentUser->removeDislike($article);
-////            $article->removeUserDisliked($currentUser);
-//        }
+        if (in_array($article->getId(), $currentUser->getDislikedArticles()))
+        {
+            $currentUser->removeDislikedArticle($article);
+
+            $article->setDislikesCount($article->getDislikesCount() - 1);
+        }
 
         $article->addUserLiked($currentUser);
 
+
         $em = $this->getDoctrine()->getManager();
         $em->merge($article);
+        $em->merge($currentUser);
 
         if (in_array($article->getId(), $currentUser->getLikedArticles())) {
             $this->addFlash('error', "You already liked this article!");
@@ -285,21 +280,13 @@ class ArticleController extends Controller
         /** @var User $currentUser */
         $currentUser = $this->getUser();
 
-//        if (in_array($article->getId(), $currentUser->getLikedArticles()))
-//        {
-//            $key_user = array_search($article->getId(), $currentUser->getLikedArticles());
-//            unset($currentUser->getLikedArticles()[$key_user]);
-//            $currentUser->getLikedArticles()[$key_user] = 0;
-//
-//            $key_article = array_search($currentUser->getId(), $article->getUsersLiked());
-//            unset($article->getUsersLiked()[$key_article]);
-//            $article->getUsersLiked()[$key_article] = 0;
-//
-//            $article->setLikesCount($article->getLikesCount() - 1);
-//
-////            $currentUser->removeLike($article);
-////            $article->removeUserLiked($currentUser);
-//        }
+        if (in_array($article->getId(), $currentUser->getLikedArticles()))
+        {
+            $currentUser->removeLikedArticle($article);
+
+            $article->setLikesCount($article->getLikesCount() - 1);
+
+        }
 
         $article->addUserDisliked($currentUser);
 

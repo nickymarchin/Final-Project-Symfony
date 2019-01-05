@@ -127,6 +127,7 @@ class Article
      * @var ArrayCollection|Comment[]
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Comment", mappedBy="article")
+     *
      */
     private $comments;
 
