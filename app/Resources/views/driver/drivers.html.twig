@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block style %}
+    <style type="text/css">
+        body {
+            padding-top: 70px;
+        }
+    </style>
+{% endblock %}
+
+{% block main %}
+
+    <div class="container">
+        <div class="row">
+            {% for driver in drivers %}
+                <div class="col-lg-4 col-sm-6 portfolio-item">
+
+                    <div class="card h-100">
+                        <a href="#"><img class="card-img-top" src="{{ asset('uploads/images/' ~ driver.image) }}"
+                                         width="150" height="250" alt=""></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="#">{{ driver.fullName }}</a>
+                            </h4>
+
+                            {% if app.getUser() %}
+                                <a href="{{ path('driver_profile', {'id': driver.id}) }}" class="btn btn-primary">Още</a>
+                            {% endif %}
+
+                            {% if app.getUser() == null %}
+                                <a href="{{ path('user_register') }}" class="btn btn-primary">Регистрирай се, за да оцениш!</a>
+                            {% endif  %}
+
+                            <div id="form">
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <br/>
+
+{% endblock %}

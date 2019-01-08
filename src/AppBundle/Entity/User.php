@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -39,6 +40,12 @@ class User implements UserInterface
     private $fullName;
 
     /**
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 255,
+     *      minMessage = "Password must be at least {{ limit }} characters long",
+     *      maxMessage = "Password cannot be longer than {{ limit }} characters"
+     * )
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=255)
@@ -93,6 +100,13 @@ class User implements UserInterface
      */
     private $comments;
 
+    /**
+     * @var ArrayCollection|Rating[]
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Rating", mappedBy="author")
+     */
+    private $driverRatings;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -100,6 +114,7 @@ class User implements UserInterface
         $this->likedArticles = new ArrayCollection();
         $this->dislikedArticles = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->driverRatings = new ArrayCollection();
     }
 
     /**
@@ -349,6 +364,25 @@ class User implements UserInterface
     public function addComment(Comment $comment = null)
     {
         $this->comments[] = $comment;
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection|Rating[]
+     */
+    public function getDriverRatings()
+    {
+        return $this->driverRatings;
+    }
+
+    /**
+     * @param Rating $rating
+     *
+     * @return User
+     */
+    public function addDriverRating(Rating $rating = null)
+    {
+        $this->driverRatings[] = $rating;
         return $this;
     }
 

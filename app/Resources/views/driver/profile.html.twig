@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block style %}
+    <style type="text/css">
+        body {
+            padding-top: 70px;
+        }
+    </style>
+{% endblock %}
+
+{% block main %}
+
+
+
+    {#<br/>#}
+
+    {#<script>#}
+
+        {#let form = $(`#}
+            {#<div class="card my-4">#}
+                    {#<h5 class="card-header">Добави оценка:</h5>#}
+                    {#<div class="card-body">#}
+                        {#<form method="post" action="{{ path('add_rate', {'id': 4}) }}">#}
+                            {#<div class="form-group">#}
+                                {#<label>#}
+                                {#<select name="rating[grade]">#}
+                                    {#{% for grade in range(1, 10) %}#}
+                                        {#<option value="{{ grade }}">{{ grade }}</option>#}
+                                    {#{% endfor %}#}
+                                {#</select>#}
+                                {#</label>#}
+                                {#<label>#}
+                                    {#<textarea class="form-control" rows="5" cols="40" id="rating_comment" name="rating[comment]"></textarea>#}
+                                {#</label>#}
+                            {#</div>#}
+                            {#<button type="submit" class="btn btn-primary">Оцени</button>#}
+                        {#</form>#}
+                    {#</div>#}
+                {#</div>#}
+        {#`);#}
+
+        {#$('#btnRate').on('click', function (e) {#}
+            {#e.preventDefault();#}
+            {#$('#form').append(form);#}
+            {#$('#form').toggle();#}
+        {#})#}
+
+    {#</script>#}
+
+{% endblock %}
