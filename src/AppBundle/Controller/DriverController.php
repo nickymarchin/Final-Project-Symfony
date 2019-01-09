@@ -91,7 +91,7 @@ class DriverController extends Controller
             $em->persist($driver);
             $em->flush();
 
-            return $this->redirectToRoute("homepage");
+            return $this->redirectToRoute("all_drivers");
         }
 
         return $this->render('driver/create.html.twig',
@@ -147,7 +147,7 @@ class DriverController extends Controller
             $em->merge($driver);
             $em->flush();
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('all_drivers');
         }
 
         return $this->render('driver/edit.html.twig',
@@ -187,7 +187,7 @@ class DriverController extends Controller
             $em->remove($driver);
             $em->flush();
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('all_drivers');
         }
 
         return $this->render('driver/delete.html.twig',

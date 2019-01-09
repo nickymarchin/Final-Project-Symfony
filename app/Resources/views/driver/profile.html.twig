@@ -61,6 +61,17 @@
                         <p class="mb-0">"{{ driver.quote }}"</p>
                         <footer class="blockquote-footer text-center">{{ driver.fullName }}</footer>
                     </blockquote>
+
+
+                {#<div class="pull-left">#}
+                    {% if app.user %}
+                        {% if app.user.isAdmin() %}
+                            <p class="text-center"><a class="btn btn-info btn-sm"
+                                                      href="{{ path('driver_edit', {'id': driver.id}) }}" role="button">Редактирай шофьор</a></p>
+                            <p class="text-center"><a class="btn btn-danger btn-sm"
+                                                      href="{{ path('driver_delete', {'id': driver.id}) }}" role="button">Изтрий шофьор</a></p>
+                        {% endif %}
+                    {% endif %}
                 </div>
             </div>
 

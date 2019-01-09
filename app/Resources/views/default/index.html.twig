@@ -41,7 +41,15 @@
                         <br/>
                         <br/>
                         <p class="text-center">Поръчай такси в Дупница и района!</p>
-                        <p class="text-center"><a class="btn btn-primary btn-lg" href="#" role="button">Обади се!</a></p>
+                        <p class="text-center"><a class="btn btn-primary btn-lg" href="{{ path('contacts') }}" role="button">Обади се!</a>
+                        </p>
+                        {% if app.user %}
+                            {% if app.user.isAdmin() %}
+                                <p class="text-center"><a class="btn btn-success btn-lg"
+                                                          href="{{ path('driver_create') }}" role="button">Добави
+                                        шофьор</a></p>
+                            {% endif %}
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -57,7 +65,7 @@
                     <p class="lead">ИВ Такси предлага нова услуга на своите клиенти – почасово наемане на таксиметрови
                         автомобили. Услугата е подходяща за гости на града,
                         които желаят да разгледат избрани обекти и забележителности.
-                        Повече <a href="#">информация и цени</a> за почасово наемане на такси</p>
+                        Повече <a href="{{ path('prices') }}">информация и цени</a> за почасово наемане на такси</p>
                 </div>
             </div>
         </div>

@@ -32,6 +32,17 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/contacts", name="contacts")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function contacts(Request $request)
+    {
+
+        return $this->render('default/contacts.html.twig');
+    }
+
+    /**
      * @Route("/blog", name="blog")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -48,7 +59,7 @@ class DefaultController extends Controller
 
             $articles, /* query NOT result */
             $request->query->getInt('page', 1)/*page number*/,
-            5/*limit per page*/
+            3/*limit per page*/
         );
 
         return $this->render('article/blog.html.twig', ['pagination' => $pagination]);

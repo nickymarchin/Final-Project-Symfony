@@ -58,7 +58,7 @@
                                 {#</li>#}
                             {#{% endif %}#}
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ path('homepage') }}">
                                     За нас
                                 </a>
                             </li>
@@ -83,7 +83,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ path('contacts') }}">
                                     Контакти
                                 </a>
                             </li>
@@ -101,7 +101,7 @@
                         {% else %}
 
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ path('homepage') }}">
                                     За нас
                                 </a>
                             </li>
@@ -111,7 +111,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ path('contacts') }}">
                                     Контакти
                                 </a>
                             </li>
