@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c2d598f3-c49c-4d10-936c-cf250961e07b" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Resources/views/default/prices.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/driver/drivers.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/driver/drivers.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/driver/profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/driver/profile.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/DriverController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/DriverController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/RatingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/RatingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Driver.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Driver.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/default/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,37 +34,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ArticleController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ArticleController.php">
+      <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="474">
-              <caret line="302" column="19" selection-start-line="302" selection-start-column="19" selection-end-line="302" selection-end-column="19" />
+            <state relative-caret-position="464">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
               <folding>
-                <element signature="e#40#97#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RatingController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/RatingController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="39" column="27" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
-              <folding>
-                <element signature="e#40#68#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/User.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="109" column="33" selection-start-line="109" selection-start-column="33" selection-end-line="109" selection-end-column="33" />
-              <folding>
-                <element signature="e#36#84#0#PHP" expanded="true" />
+                <element signature="e#756#782#1#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,23 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RatingType.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/RatingType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="512">
-              <caret line="32" column="40" selection-start-line="32" selection-start-column="40" selection-end-line="32" selection-end-column="40" />
-              <folding>
-                <element signature="e#34#66#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="drivers.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/driver/drivers.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="512">
-              <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
+              <caret line="47" selection-start-line="47" selection-end-line="47" />
             </state>
           </provider>
         </entry>
@@ -131,16 +94,49 @@
         <entry file="file://$PROJECT_DIR$/app/Resources/views/driver/create.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
-              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="844">
+              <caret line="149" column="18" selection-start-line="149" selection-start-column="18" selection-end-line="149" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profile.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/driver/profile.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="469">
               <caret line="90" column="41" selection-start-line="90" selection-start-column="41" selection-end-line="90" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/default/index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="320">
+              <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="prices.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/default/prices.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="576">
+              <caret line="66" column="14" selection-start-line="66" selection-start-column="14" selection-end-line="66" selection-end-column="14" />
+              <folding>
+                <element signature="e#1441#1448#0#HTML" expanded="true" />
+                <element signature="e#1587#1594#0#HTML" expanded="true" />
+                <element signature="e#1883#1890#0#HTML" expanded="true" />
+                <element signature="e#2260#2266#1#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -185,11 +181,9 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Category.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/article/edit.html.twig" />
         <option value="$PROJECT_DIR$/app/AppKernel.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Repository/ArticleRepository.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/ArticleController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Comment.php" />
-        <option value="$PROJECT_DIR$/app/Resources/views/default/index.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Repository/DriverRepository.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Article.php" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
@@ -201,13 +195,16 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Rating.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/driver/edit.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/article/blog.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Driver.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/RatingController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/DriverController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/driver/drivers.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/driver/profile.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/default/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/default/prices.html.twig" />
       </list>
     </option>
   </component>
@@ -404,11 +401,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\FinalProject\app\Resources\views\default" />
       <recent name="C:\xampp\htdocs\FinalProject\app\Resources\views\driver" />
       <recent name="C:\xampp\htdocs\FinalProject\src\AppBundle\Repository" />
       <recent name="C:\xampp\htdocs\FinalProject\src\AppBundle\Form" />
       <recent name="C:\xampp\htdocs\FinalProject\app\Resources\views\article" />
-      <recent name="C:\xampp\htdocs\FinalProject\web" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -451,16 +448,15 @@
       <workItem from="1546705068859" duration="1992000" />
       <workItem from="1546808967789" duration="563000" />
       <workItem from="1546957166027" duration="15984000" />
-      <workItem from="1547030116336" duration="5456000" />
+      <workItem from="1547030116336" duration="7467000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95895000" />
+    <option name="totallyTimeSpent" value="97906000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20507812" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -490,7 +486,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/css/style.css" />
     <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -567,13 +562,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/default/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="46" column="14" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -741,27 +729,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="42" column="84" selection-start-line="42" selection-start-column="55" selection-end-line="42" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/article/blog.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1008">
           <caret line="63" column="28" selection-start-line="63" selection-start-column="28" selection-end-line="63" selection-end-column="126" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="60" column="61" selection-start-line="60" selection-start-column="61" selection-end-line="60" selection-end-column="61" />
-          <folding>
-            <element signature="e#6990#6996#0#HTML" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -830,7 +801,7 @@
     <entry file="file://$PROJECT_DIR$/app/Resources/views/driver/drivers.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="512">
-          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
         </state>
       </provider>
     </entry>
@@ -844,7 +815,7 @@
     <entry file="file://$PROJECT_DIR$/app/Resources/views/driver/create.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
@@ -852,6 +823,43 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="469">
           <caret line="90" column="41" selection-start-line="90" selection-start-column="41" selection-end-line="90" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/default/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+          <folding>
+            <element signature="e#756#782#1#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="844">
+          <caret line="149" column="18" selection-start-line="149" selection-start-column="18" selection-end-line="149" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/default/prices.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="66" column="14" selection-start-line="66" selection-start-column="14" selection-end-line="66" selection-end-column="14" />
+          <folding>
+            <element signature="e#1441#1448#0#HTML" expanded="true" />
+            <element signature="e#1587#1594#0#HTML" expanded="true" />
+            <element signature="e#1883#1890#0#HTML" expanded="true" />
+            <element signature="e#2260#2266#1#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

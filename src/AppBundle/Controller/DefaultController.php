@@ -21,6 +21,17 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/prices", name="prices")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function prices(Request $request)
+    {
+
+        return $this->render('default/prices.html.twig');
+    }
+
+    /**
      * @Route("/blog", name="blog")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
