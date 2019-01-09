@@ -16,23 +16,39 @@
                 <div class="col-lg-4 col-sm-6 portfolio-item">
 
                     <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="{{ asset('uploads/images/' ~ driver.image) }}"
-                                         width="150" height="250" alt=""></a>
+                        <img class="card-img-top" src="{{ asset('uploads/images/' ~ driver.image) }}"
+                             width="150" height="300" alt="">
                         <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">{{ driver.fullName }}</a>
-                            </h4>
+                            <h5 class="card-title">
+                                <u>{{ driver.fullName }}</u>
+                            </h5>
+
+                            <div>
+                                <h6>
+                                    {% if driver.ratingsCount != null %}
+                                        Средна оценка на шофьор: (1-10)
+                                        <h2><i class="fa fa-star-o"
+                                               aria-hidden="true"></i>{{ (driver.ratingsSum / driver.ratingsCount)|round(2) }}</h2>
+                                    {% endif %}
+                                </h6>
+                            </div>
 
                             {% if app.getUser() %}
-                                <a href="{{ path('driver_profile', {'id': driver.id}) }}" class="btn btn-primary">Още</a>
+                                <a href="{{ path('driver_profile', {'id': driver.id}) }}"
+                                   class="btn btn-primary">Оцени, разгледай коментари</a>
                             {% endif %}
 
                             {% if app.getUser() == null %}
-                                <a href="{{ path('user_register') }}" class="btn btn-primary">Регистрирай се, за да оцениш!</a>
-                            {% endif  %}
+                                <a href="{{ path('user_register') }}" class="btn btn-primary">Регистрирай се, за да
+                                    оцениш!</a>
+                            {% endif %}
 
-                            <div id="form">
 
+                            <br />
+
+                            Брой потебители дали оценка:
+                            <div>
+                                <i class="fa fa-users" aria-hidden="true"></i>{{ driver.ratingsCount }}
                             </div>
 
                         </div>

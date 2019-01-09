@@ -66,6 +66,13 @@ class Driver
      */
     private $ratingsCount;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="ratingsSum", type="integer")
+     */
+    private $ratingsSum;
+
     public function __construct()
     {
         $this->ratings = new ArrayCollection();
@@ -200,6 +207,22 @@ class Driver
     public function setRatingsCount(int $ratingsCount): void
     {
         $this->ratingsCount = $ratingsCount;
+    }
+
+    /**
+     * @return int
+     */
+    public function getRatingsSum(): int
+    {
+        return $this->ratingsSum;
+    }
+
+    /**
+     * @param int $ratingsSum
+     */
+    public function setRatingsSum(int $ratingsSum): void
+    {
+        $this->ratingsSum = $ratingsSum;
     }
 }
 

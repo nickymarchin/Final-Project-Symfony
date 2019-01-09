@@ -23,7 +23,7 @@ class RatingController extends Controller
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function addComment(Request $request, $id)
+    public function addRate(Request $request, $id)
     {
         $rating = new Rating();
         $form = $this->createForm(RatingType::class, $rating);
@@ -45,8 +45,10 @@ class RatingController extends Controller
         $rating->setDriver($driver);
 
         $author->addDriverRating($rating);
+
         $driver->addRating($rating);
         $driver->setRatingsCount($driver->getRatingsCount() + 1);
+        $driver->setRatingsSum($driver->getRatingsSum() + $form->getData()->getGrade());
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($rating);

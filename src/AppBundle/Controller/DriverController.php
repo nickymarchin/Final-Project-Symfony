@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Driver;
+use AppBundle\Entity\Rating;
 use AppBundle\Form\DriverType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -31,13 +32,19 @@ class DriverController extends Controller
     }
 
     /**
-     * @Route("/driver/profile", name="driver_profile")
+     * @Route("/driver/profile/{id}", name="driver_profile")
      *
+     * @param $id
      * @return Response
      */
-    public function driverProfile(){
+    public function driverProfile($id){
 
-        return $this->render('driver/profile.html.twig');
+        $driver = $this
+            ->getDoctrine()
+            ->getRepository(Driver::class)
+            ->find($id);
+
+        return $this->render('driver/profile.html.twig', ['driver' => $driver]);
 
     }
 
@@ -78,6 +85,7 @@ class DriverController extends Controller
 
             $driver->setImage($fileName);
             $driver->setRatingsCount(0);
+            $driver->setRatingsSum(0);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($driver);
