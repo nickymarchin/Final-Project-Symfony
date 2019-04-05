@@ -38,7 +38,6 @@ class DefaultController extends Controller
      */
     public function contacts(Request $request)
     {
-
         return $this->render('default/contacts.html.twig');
     }
 
